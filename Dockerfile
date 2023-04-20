@@ -6,7 +6,7 @@ RUN apt update
 RUN apt install -y wget
 RUN mkdir -p ~/.postgresql && \
     wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" -O ~/.postgresql/root.crt && \
-    chmod 0600 ~/.postgresql/root.crt \
+    chmod 0600 ~/.postgresql/root.crt 
 RUN mkdir --parents /usr/local/share/ca-certificates/Yandex/ && \
     wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" \
     --output-document /usr/local/share/ca-certificates/Yandex/YandexCA.crt && \
