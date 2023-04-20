@@ -16,6 +16,6 @@ deploy:
     - ${TAG_NAME}
   script:
   - docker compose down
-  # - docker rmi gads_auth-gads-auth
-  # - docker rmi gads_auth-nginx
+  - docker rmi gads_auth-gads-auth
+  - docker rmi gads_auth-nginx
   - docker compose up -d
