@@ -1,5 +1,10 @@
 version: "3.8"
-
+networks:
+  gads:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.15.0.1/16
 services:
   gads-auth:
     build: .
@@ -20,7 +25,8 @@ services:
       ECOMRU_CH_PORT: ${ECOMRU_CH_PORT}
     volumes:
       - /home/get/logs_all//gads_auth/:/app/logs/
-
+    networks:
+      - gads
   nginx:
     container_name: nginx-gads-auth
     build:
@@ -36,4 +42,5 @@ services:
      - 4431:443
     volumes:
       - /home/get/cert:/app/cert
-
+    networks:
+      - gads
