@@ -53,21 +53,26 @@ class GAdsEcomru:
         Список доступных учетных записей
         https://developers.google.com/google-ads/api/docs/account-management/listing-accounts?hl=ru
         """
-        customer_service = self.client.get_service("CustomerService")
+        try:
+            customer_service = self.client.get_service("CustomerService")
 
-        accessible_customers = customer_service.list_accessible_customers()
-        result_total = len(accessible_customers.resource_names)
-        print(f"Total results: {result_total}")
+            accessible_customers = customer_service.list_accessible_customers()
+            # result_total = len(accessible_customers.resource_names)
+            # print(f"Total results: {result_total}")
 
-        resource_names = accessible_customers.resource_names
-        # print(resource_names)
-        # print(type(resource_names))
-        result = []
-        for resource_name in resource_names:
-            result.append(resource_name.split('/')[-1])
-        #     print(f'Customer resource name: "{resource_name}"')
+            resource_names = accessible_customers.resource_names
+            # print(resource_names)
+            # print(type(resource_names))
+            result = []
+            for resource_name in resource_names:
+                result.append(resource_name.split('/')[-1])
+                # print(type(resource_name))
+            #     print(f'Customer resource name: "{resource_name}"')
 
-        return result
+            return result
+
+        except GoogleAdsException as ex:
+            return {'error': str(ex.error.code().name), 'message': [error.message for error in ex.failure.errors]}
 
     def get_campaigns(self,
                       customer_id: str,

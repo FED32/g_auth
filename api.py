@@ -44,7 +44,6 @@ def credentials_to_dict(credentials):
 
 
 @app.route('/authorize')
-# @swag_from("swagger_conf/authorize.yml")
 def authorize():
     try:
         client_id = request.args.get('client_id')
@@ -108,7 +107,7 @@ def oauth2callback():
         logger.info(f"credentials successfully")
 
         # print(flask.session['credentials'])
-        print(credentials.to_json())
+        # print(credentials.to_json())
 
         gads = GAdsEcomru(client_id=config.CLIENT_ID,
                           client_secret=config.CLIENT_SECRET,

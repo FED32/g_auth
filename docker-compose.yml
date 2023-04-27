@@ -24,6 +24,7 @@ services:
       ECOMRU_CH_PASSWORD: ${ECOMRU_CH_PASSWORD}
       ECOMRU_CH_PORT: ${ECOMRU_CH_PORT}
       FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
+      GADS_DEVELOPER_TOKEN: ${GADS_DEVELOPER_TOKEN}
     volumes:
       - /home/get/logs_all//gads_auth/:/app/logs/
     networks:

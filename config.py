@@ -1,4 +1,5 @@
 import os
+import json
 
 
 class Configuration(object):
@@ -39,9 +40,10 @@ PG_DB_PARAMS = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB
 
 FLASK_SECRET_KEY = os.environ.get('FLASK_SECRET_KEY', None)
 
+with open(client_secrets_file, 'r', encoding='utf-8') as f:
+    client_secrets = json.load(f)
 
-CLIENT_ID = '660722585949-478ao09befcevaosv1ot311so9dt5575.apps.googleusercontent.com'
-CLIENT_SECRET = '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'
-# LOGIN_CUSTOMER_ID = '8294188123'
-DEVELOPER_TOKEN = 'e02pIe5eebUjGPnk8BiG3Q'
+CLIENT_ID = client_secrets['web']['client_id']
+CLIENT_SECRET = client_secrets['web']['client_secret']
+DEVELOPER_TOKEN = os.environ.get('GADS_DEVELOPER_TOKEN', None)
 
