@@ -13,7 +13,6 @@ from config import Configuration
 from ecom_g_ads import GAdsEcomru
 import logger
 
-
 logger = logger.init_logger()
 
 app = flask.Flask(__name__)
@@ -85,7 +84,6 @@ def oauth2callback():
         client_id = request.args.get('state')
 
         if request.args.get('error') is not None:
-
             # return flask.redirect("https://lk.ecomru.ru")
             return jsonify({'client_id': client_id, 'error': request.args.get('error')})
 
@@ -139,5 +137,3 @@ def oauth2callback():
     except BaseException as ex:
         logger.error(f'oauth2callback error: {ex}')
         return flask.Response(None, 400)
-
-

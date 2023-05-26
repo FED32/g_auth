@@ -17,8 +17,8 @@ SCOPES = ["https://www.googleapis.com/auth/userinfo.email",
           ]
 # SCOPES = ["https://www.googleapis.com/auth/adwords"]
 
-redirect_uri = "https://apps0.ecomru.ru:4431/oauth2callback"
-# redirect_uri = "http://127.0.0.1:5000/oauth2callback"
+# redirect_uri = "https://apps0.ecomru.ru:4431/oauth2callback"
+redirect_uri = "http://127.0.0.1:5000/oauth2callback"
 
 
 PG_HOST = os.environ.get('ECOMRU_PG_HOST', None)
@@ -35,7 +35,6 @@ CH_USER = os.environ.get('ECOMRU_CH_USER', None)
 CH_PASSWORD = os.environ.get('ECOMRU_CH_PASSWORD', None)
 CH_PORT = os.environ.get('ECOMRU_CH_PORT', None)
 
-
 PG_DB_PARAMS = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB_NAME}"
 
 FLASK_SECRET_KEY = os.environ.get('FLASK_SECRET_KEY', None)
@@ -46,4 +45,3 @@ with open(client_secrets_file, 'r', encoding='utf-8') as f:
 CLIENT_ID = client_secrets['web']['client_id']
 CLIENT_SECRET = client_secrets['web']['client_secret']
 DEVELOPER_TOKEN = os.environ.get('GADS_DEVELOPER_TOKEN', None)
-
